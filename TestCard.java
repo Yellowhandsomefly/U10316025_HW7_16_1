@@ -3,23 +3,18 @@ import java.awt.event.*;
 import java.awt.*;
 
 public class TestCard extends JFrame{
-	
-	/**Creatr a deck*/
 	private DeckOfCards deck = new DeckOfCards();
-	
-	/**Create a list to store image icon*/
 	private java.util.ArrayList<ImageIcon> list = new  java.util.ArrayList<ImageIcon>();
 
-	/**Create four labels*/
-	private JLabel jrd1 = new JLabel();
-	private JLabel jrd2 = new JLabel();
-	private JLabel jrd3 = new JLabel();
-	private JLabel jrd4 = new JLabel();
+	private JButton jbt = new JButton("Refresh");
+	private JLabel jrd1 = new JLabel("");
+	private JLabel jrd2 = new JLabel("");
+	private JLabel jrd3 = new JLabel("");
+	private JLabel jrd4 = new JLabel("");
 			
 
 	public TestCard(){
 		
-		/**Create image icon and add image icon to list*/
 		list.add(new ImageIcon("image/1.png"));
 		list.add(new ImageIcon("image/2.png"));
 		list.add(new ImageIcon("image/3.png"));
@@ -72,54 +67,38 @@ public class TestCard extends JFrame{
 		list.add(new ImageIcon("image/50.png"));
 		list.add(new ImageIcon("image/51.png"));
 		list.add(new ImageIcon("image/52.png"));
-		
-		/**Declare and create an deck array */
+
 		int card[] = new int[4];
 		card = deck.Display();
 		
-		/**Create a panel p1 for the label and set GridLayout*/
 		JPanel p1 = new JPanel(new GridLayout(1, 4));
 		
-		/**Get the card number and then create four labels with the icons of four cards*/
 		jrd1 = new JLabel(list.get(card[0]));
 		jrd2 = new JLabel(list.get(card[1]));
 		jrd3 = new JLabel(list.get(card[2]));
 		jrd4 = new JLabel(list.get(card[3]));
-		
-		/**Add four labels to panel p1*/
 		p1.add(jrd1);
 		p1.add(jrd2);
 		p1.add(jrd3);
 		p1.add(jrd4);
 
-		/**Create a panel p2 for the button and set FlowLayout*/
 		JPanel p2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		
-		/**Create the Refresh button*/
-		JButton jbt = new JButton("Refresh");
-		
-		/**Add the refresh button to panel p2*/
 		p2.add(jbt);
 		
-		/**Add the panel to the frame*/
 		add(p1, BorderLayout.NORTH);	
 		add(p2, BorderLayout.SOUTH);
 
-		/**Register listener*/
 		jbt.addActionListener(new ButtonListener());
 	}
 	
-	/**Handle the Refresh button*/
-	private class ButtonListener implements ActionListener{
+	class ButtonListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e){
-			
-			/**Declare and create an deck array */
 			int card[] = new int[4];
 			card = deck.Display();
-			
-			/**Get the card number and then set the icons of four cards*/
+
 			jrd1.setIcon(list.get(card[0]));
 			jrd2.setIcon(list.get(card[1]));
 			jrd3.setIcon(list.get(card[2]));
@@ -132,11 +111,11 @@ public class TestCard extends JFrame{
 	public static void main(String[] args) {
 		TestCard frame = new TestCard();
   
-		frame.setTitle("Deck Of Cards"); //Set the frame title
-		frame.pack(); //Set the frame size
+		frame.setTitle("Deck Of Cards");
+		frame.setSize(300, 200);
 		frame.setLocationRelativeTo(null); // Center the frame
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true); //Display the frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+		frame.setVisible(true);
 	}
 
 }
