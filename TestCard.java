@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class TestCard extends JFrame{
 	
-	/**Creatr a deck*/
+	/**Create a deck*/
 	private DeckOfCards deck = new DeckOfCards();
 	
 	/**Create a list to store image icon*/
